@@ -7,6 +7,7 @@
 #include <OneWire.h>
 #include <microDS18B20.h>
 #include <DHT.h>
+#include <GyverPower.h>
 
 int counter = 0;
 byte localAddress = 0xBB;
@@ -14,20 +15,21 @@ byte destination = 0xFF;
 uint32_t time = 0;
 long lastSendTime = 0;
 unsigned int interval = 2000;
-uint64_t timer = 0;
+// uint64_t timer = 0;
 
 uint8_t adr1[] = {0x28, 0xFF, 0x64, 0x2, 0xEF, 0x4C, 0xF4, 0x1A};
 uint8_t adr2[] = {0x28, 0xFF, 0x64, 0x2, 0xEF, 0x4, 0x61, 0xD9};
 uint8_t adr3[] = {0x28, 0xFF, 0x64, 0x2, 0x19, 0xCE, 0x13, 0x92};
 
 DHT dht(DHTPIN, DHT11);
+GyverPower powerManager;
 MicroDS18B20<ONEWIREPIN, adr1> ds1;
 MicroDS18B20<ONEWIREPIN, adr2> ds2;
 MicroDS18B20<ONEWIREPIN, adr3> ds3;
 
 void sendData(float *dsTemp, float *dhtInfo)
 {
-    Serial.print("Sending packet: ");
+    //Serial.print("Sending packet: ");
     Serial.println(counter);
 
     LoRa.beginPacket();
@@ -66,14 +68,9 @@ float *readDS18Temp()
 
 void requestDS18Temp()
 {
-
-    if (millis() - timer > interval)
-    {
-        ds1.requestTemp();
-        ds2.requestTemp();
-        ds3.requestTemp();
-        timer = millis();
-    }
+    ds1.requestTemp();
+    ds2.requestTemp();
+    ds3.requestTemp();
 }
 void printDhtInfo(float *dhtArr)
 {
