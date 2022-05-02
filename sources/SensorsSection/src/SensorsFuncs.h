@@ -1,10 +1,9 @@
 #include "header.h"
 
-
-
 float *readDHT()
 {
-    static float dhtSensorsInfo[2];
+    static float dhtSensorsInfo[2]{404, 404};
+
     dhtSensorsInfo[1] = dht.readHumidity();
     dhtSensorsInfo[0] = dht.readTemperature();
     return dhtSensorsInfo;

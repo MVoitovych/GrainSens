@@ -6,8 +6,9 @@ void setup()
 
   dht.begin();
   LoRa.begin(433E6);
-
   LoRa.setTxPower(20);
+  LoRa.sleep();
+
   powerManager.setSleepMode(POWERDOWN_SLEEP);
   powerManager.autoCalibrate();
 
@@ -15,18 +16,23 @@ void setup()
   {
     dsSensors[i].setAddress(adresses[i]);
   }
+
 }
 
 void loop()
 {
-
   requestDS18Temp();
+
   power.sleepDelay(1024);
 
-  float *dsArr = readDS18Temp();
   float *dhtArr = readDHT();
+  float *dsArr = readDS18Temp();
+  
   sendData(dsArr, dhtArr);
-  delete dsArr;
+  power.sleepDelay(128);
+  sendData(dsArr, dhtArr);
+  packetID++;
 
-  powerManager.sleepDelay(10240);
+  delete dsArr;
+  powerManager.sleepDelay(600000);
 }

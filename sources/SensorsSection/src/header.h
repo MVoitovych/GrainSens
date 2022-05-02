@@ -1,7 +1,6 @@
 #pragma once
 #define DHTPIN 8
 #define DS18PIN 3
-#define ONEWIREPIN 3
 
 #include <Arduino.h>
 #include <GyverPower.h>
@@ -10,10 +9,11 @@
 #include <LoRa.h>
 #include <OneWire.h>
 
-int counter = 0;
-String localAddress = "abcdffff";
+int packetID = 0;
+
+String localAddress = "00TEST00";
+unsigned int lengthOfAdress = localAddress.length();
 unsigned int ds18Amount = 2;
-uint32_t time = 0;
 unsigned int interval = 2000;
 
 uint8_t adr1[] = {0x28, 0xFF, 0x64, 0x2, 0xEF, 0x4C, 0xF4, 0x1A};

@@ -59,3 +59,19 @@ sources/SensorsSection/.vscode/ipch
 sources/SensorsSection/platformio.ini
 sources/SensorsSection/.vscode/extensions.json
 
+sources/GateWay/.pio
+sources/GateWay/.vscode/.browse.c_cpp.db*
+sources/GateWay/.vscode/c_cpp_properties.json
+sources/GateWay/.vscode/launch.json
+sources/GateWay/.vscode/ipch
+sources/GateWay/platformio.ini
+sources/GateWay/.vscode/extensions.json
+
+sources/Reciever/.pio
+sources/Reciever/.vscode/.browse.c_cpp.db*
+sources/Reciever/.vscode/c_cpp_properties.json
+sources/Reciever/.vscode/launch.json
+sources/Reciever/.vscode/ipch
+sources/Reciever/platformio.ini
+sources/Reciever/.vscode/extensions.json
+
