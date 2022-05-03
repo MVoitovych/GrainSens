@@ -1,2 +1,2 @@
 # GrainSens
-grainsens projeckt
+grainsens project
